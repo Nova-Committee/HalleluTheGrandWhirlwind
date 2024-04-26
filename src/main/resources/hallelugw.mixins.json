@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "committee.nova.hallelugw.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinAbstractHurtingProjectile",
+    "MixinAbstractWindCharge",
+    "MixinBreeze",
+    "MixinMob",
+    "MixinShoot"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

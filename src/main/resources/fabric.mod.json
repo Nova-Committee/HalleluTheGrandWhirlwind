@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "hallelugw",
+  "version": "${version}",
+  "name": "HalleluTheGrandWhirlwind",
+  "description": "",
+  "authors": [
+    "Tapio"
+  ],
+  "contact": {},
+  "license": "LGPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+  },
+  "mixins": [
+    "hallelugw.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric": "*",
+    "minecraft": "*"
+  }
+}
