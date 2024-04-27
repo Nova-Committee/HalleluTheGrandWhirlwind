@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Mob.class)
-public class MixinMob {
+public abstract class MixinMob {
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     private void inject$addAdditionalData(CompoundTag tag, CallbackInfo ci) {
         if (!(this instanceof ExtendedBreeze breeze)) return;

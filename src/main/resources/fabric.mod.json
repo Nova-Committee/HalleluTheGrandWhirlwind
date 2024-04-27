@@ -3,11 +3,13 @@
   "id": "hallelugw",
   "version": "${version}",
   "name": "HalleluTheGrandWhirlwind",
-  "description": "",
+  "description": "Make the breezes mergeable",
   "authors": [
     "Tapio"
   ],
-  "contact": {},
+  "contact": {
+    "sources": "https://github.com/Nova-Committee/HalleluTheGrandWhirlwind/"
+  },
   "license": "LGPL-3.0",
   "environment": "*",
   "entrypoints": {
@@ -17,7 +19,6 @@
   ],
   "depends": {
     "fabricloader": "*",
-    "fabric": "*",
     "minecraft": "*"
   }
 }
