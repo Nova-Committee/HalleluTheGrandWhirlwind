@@ -72,6 +72,7 @@ public abstract class MixinBreeze extends Monster implements ExtendedBreeze {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void inject$tick(CallbackInfo ci) {
+        if (firstTick) this.hallelugw$initialized = true;
         if (!hallelugw$initialized()) return;
         if ((tickCount + getId()) % 40 != 0) return;
         final int thisSize = hallelugw$getSize();
