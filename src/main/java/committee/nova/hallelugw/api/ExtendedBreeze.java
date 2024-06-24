@@ -1,8 +1,6 @@
 package committee.nova.hallelugw.api;
 
 public interface ExtendedBreeze {
-    boolean hallelugw$initialized();
-
     int hallelugw$getSize();
 
     void hallelugw$setSize(int size);

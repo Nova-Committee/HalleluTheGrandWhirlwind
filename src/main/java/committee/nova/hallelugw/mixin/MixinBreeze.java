@@ -11,7 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -19,12 +18,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Breeze.class)
 public abstract class MixinBreeze extends Monster implements ExtendedBreeze {
-    @Shadow
-    public abstract void playWhirlSound();
-
-    @Unique
-    private boolean hallelugw$initialized = false;
-
     @Unique
     private int hallelugw$mergeTarget = -1;
 
@@ -53,12 +46,6 @@ public abstract class MixinBreeze extends Monster implements ExtendedBreeze {
             this.setHealth(this.getMaxHealth() * healthRate);
             this.hallelugw$size0 = this.hallelugw$size;
         }
-        this.hallelugw$initialized = true;
-    }
-
-    @Override
-    public boolean hallelugw$initialized() {
-        return this.hallelugw$initialized;
     }
 
     @Unique
@@ -72,8 +59,7 @@ public abstract class MixinBreeze extends Monster implements ExtendedBreeze {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void inject$tick(CallbackInfo ci) {
-        if (firstTick) this.hallelugw$initialized = true;
-        if (!hallelugw$initialized()) return;
+        if (level().isClientSide) return;
         if ((tickCount + getId()) % 40 != 0) return;
         final int thisSize = hallelugw$getSize();
         if (hallelugw$mergeTarget != -1) {
@@ -93,7 +79,6 @@ public abstract class MixinBreeze extends Monster implements ExtendedBreeze {
             }
             that.discard();
             this.hallelugw$setSize(newSize);
-            playWhirlSound();
         } else {
             level().getEntities(
                             EntityTypeTest.forExactClass(Breeze.class),
